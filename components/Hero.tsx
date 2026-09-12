@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import CategoryIcon from "./CategoryIcon";
 import { categories } from "@/data/categories";
 
 const floaters = [
@@ -80,10 +80,16 @@ export default function Hero() {
               initial={{ opacity: 0, scale: 0.85, y: 16 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 + f.delay, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute flex items-center justify-center rounded-3xl border border-line bg-white shadow-[0_16px_40px_rgba(11,42,64,0.1)]"
+              className="absolute overflow-hidden rounded-3xl border border-line bg-white shadow-[0_16px_40px_rgba(11,42,64,0.1)]"
               style={{ left: f.x, top: f.y, width: f.size, height: f.size }}
             >
-              <CategoryIcon slug={f.slug} className="h-3/5 w-3/5" />
+              <Image
+                src={categories.find((c) => c.slug === f.slug)!.photo}
+                alt=""
+                fill
+                sizes="150px"
+                className="object-cover"
+              />
             </motion.div>
           ))}
           <motion.div

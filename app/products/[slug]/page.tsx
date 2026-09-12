@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { products, getProduct } from "@/data/products";
 import { getCategory } from "@/data/categories";
-import CategoryIcon from "@/components/CategoryIcon";
 import AddToCartForm from "@/components/AddToCartForm";
 
 export function generateStaticParams() {
@@ -37,8 +37,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
         <div>
-          <div className="halftone-cyan flex aspect-square items-center justify-center rounded-3xl border border-line bg-mist">
-            <CategoryIcon slug={category.icon} className="h-40 w-40 text-navy" />
+          <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-mist">
+            <Image
+              src={product.photo ?? category.photo}
+              alt={product.name}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
           </div>
           <div className="mt-6 grid grid-cols-3 gap-3">
             {product.specs.map((spec) => (

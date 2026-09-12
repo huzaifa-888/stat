@@ -1,4 +1,4 @@
-import CategoryIcon from "@/components/CategoryIcon";
+import Image from "next/image";
 import { categories } from "@/data/categories";
 
 export const metadata = { title: "About — Smart Printing" };
@@ -23,10 +23,14 @@ export default function AboutPage() {
 
       <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat) => (
-          <div key={cat.slug} className="rounded-3xl border border-line bg-white p-6">
-            <CategoryIcon slug={cat.icon} className="h-12 w-12 text-navy" />
-            <h3 className="mt-4 font-display font-semibold text-navy">{cat.name}</h3>
-            <p className="mt-1.5 text-sm text-navy/60">{cat.description}</p>
+          <div key={cat.slug} className="overflow-hidden rounded-3xl border border-line bg-white">
+            <div className="relative h-36">
+              <Image src={cat.photo} alt={cat.name} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
+            </div>
+            <div className="p-6">
+              <h3 className="font-display font-semibold text-navy">{cat.name}</h3>
+              <p className="mt-1.5 text-sm text-navy/60">{cat.description}</p>
+            </div>
           </div>
         ))}
       </div>
