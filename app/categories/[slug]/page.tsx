@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { categories, getCategory } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
-import CategoryIcon from "@/components/CategoryIcon";
 import ProductCard from "@/components/ProductCard";
 
 export function generateStaticParams() {
@@ -33,18 +33,23 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
         <span className="text-navy">{category.name}</span>
       </nav>
 
-      <div className="mt-6 flex flex-col gap-8 rounded-3xl border border-line bg-white p-8 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <p className="text-sm font-medium text-cyan-deep">{category.tagline}</p>
-          <h1 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
-            {category.name}
-          </h1>
-          <p className="mt-3 max-w-xl text-navy/60">{category.description}</p>
+      <div className="mt-6 overflow-hidden rounded-3xl border border-line bg-white">
+        <div className="relative h-56 sm:h-72">
+          <Image src={category.photo} alt={category.name} fill sizes="100vw" className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
+          <div className="absolute bottom-0 left-0 p-6 sm:p-8">
+            <p className="text-sm font-medium text-cyan-soft">{category.tagline}</p>
+            <h1 className="mt-2 font-display text-3xl font-semibold text-white sm:text-4xl">
+              {category.name}
+            </h1>
+          </div>
+        </div>
+        <div className="p-6 sm:p-8">
+          <p className="max-w-xl text-navy/60">{category.description}</p>
           <p className="mt-4 text-sm text-navy/50">
             Typical turnaround: <span className="font-medium text-navy">{category.turnaround}</span>
           </p>
         </div>
-        <CategoryIcon slug={category.icon} className="hidden h-32 w-32 flex-shrink-0 text-navy sm:block" />
       </div>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

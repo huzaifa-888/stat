@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories } from "@/data/categories";
-import CategoryIcon from "./CategoryIcon";
 import CornerBadge from "./CornerBadge";
 
 const spans = [
@@ -34,18 +34,22 @@ export default function CategoryGrid() {
             <Link
               key={cat.slug}
               href={`/categories/${cat.slug}`}
-              className={`group focus-ring relative flex flex-col justify-between overflow-hidden rounded-3xl border border-line bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(11,42,64,0.12)] ${spans[i]}`}
+              className={`group focus-ring relative flex flex-col justify-end overflow-hidden rounded-3xl border border-line transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(11,42,64,0.12)] ${spans[i]}`}
             >
-              <CornerBadge />
-              <CategoryIcon
-                slug={cat.icon}
-                className={`${isLarge ? "h-24 w-24" : "h-14 w-14"} text-navy transition-transform duration-300 group-hover:scale-105`}
+              <Image
+                src={cat.photo}
+                alt={cat.name}
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
-              <div>
-                <h3 className={`font-display font-semibold text-navy ${isLarge ? "text-2xl" : "text-lg"}`}>
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/20 to-transparent" />
+              <CornerBadge />
+              <div className="relative p-6">
+                <h3 className={`font-display font-semibold text-white ${isLarge ? "text-2xl" : "text-lg"}`}>
                   {cat.name}
                 </h3>
-                <p className={`mt-1 text-navy/60 ${isLarge ? "max-w-sm text-sm" : "text-xs"}`}>
+                <p className={`mt-1 text-white/75 ${isLarge ? "max-w-sm text-sm" : "text-xs"}`}>
                   {cat.tagline}
                 </p>
               </div>

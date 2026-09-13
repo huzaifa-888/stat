@@ -1,20 +1,27 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Product } from "@/data/products";
 import { categories } from "@/data/categories";
-import CategoryIcon from "./CategoryIcon";
 import CornerBadge from "./CornerBadge";
 
 export default function ProductCard({ product }: { product: Product }) {
   const category = categories.find((c) => c.slug === product.category)!;
+  const photo = product.photo ?? category.photo;
 
   return (
     <Link
       href={`/products/${product.slug}`}
       className="group focus-ring relative flex flex-col overflow-hidden rounded-3xl border border-line bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(11,42,64,0.12)]"
     >
-      <div className="halftone-cyan relative flex h-40 items-center justify-center bg-mist opacity-100">
+      <div className="relative h-44 overflow-hidden bg-mist">
         <CornerBadge />
-        <CategoryIcon slug={category.icon} className="h-16 w-16 text-navy transition-transform duration-300 group-hover:scale-110" />
+        <Image
+          src={photo}
+          alt={product.name}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+        />
       </div>
       <div className="flex flex-1 flex-col p-5">
         <p className="text-xs font-medium uppercase tracking-wide text-cyan-deep">{category.name}</p>

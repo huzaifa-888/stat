@@ -12,12 +12,14 @@ export interface Category {
   tagline: string;
   description: string;
   icon: CategorySlug;
+  photo: string;
   turnaround: string;
 }
 
 export const categories: Category[] = [
   {
     slug: "business-stationery",
+    photo: "/images/categories/business-stationery.jpg",
     name: "Business & Stationery",
     tagline: "The paper that shakes hands for you",
     description:
@@ -27,6 +29,7 @@ export const categories: Category[] = [
   },
   {
     slug: "marketing-print",
+    photo: "/images/categories/marketing-print.jpg",
     name: "Marketing & Print Ads",
     tagline: "Ideas that leave the screen",
     description:
@@ -36,6 +39,7 @@ export const categories: Category[] = [
   },
   {
     slug: "large-format",
+    photo: "/images/categories/large-format.jpg",
     name: "Large Format",
     tagline: "Made to be seen from the street",
     description:
@@ -45,6 +49,7 @@ export const categories: Category[] = [
   },
   {
     slug: "packaging-labels",
+    photo: "/images/categories/packaging-labels.jpg",
     name: "Packaging & Labels",
     tagline: "The box is part of the product",
     description:
@@ -54,6 +59,7 @@ export const categories: Category[] = [
   },
   {
     slug: "promotional-gifts",
+    photo: "/images/categories/promotional-gifts.jpg",
     name: "Promotional & Corporate Gifts",
     tagline: "Branding people actually keep",
     description:
@@ -63,6 +69,7 @@ export const categories: Category[] = [
   },
   {
     slug: "branded-apparel",
+    photo: "/images/categories/branded-apparel.jpg",
     name: "Branded Apparel",
     tagline: "Your team, dressed on brand",
     description:

@@ -14,6 +14,7 @@ export interface Product {
   basePrice: number;
   unit: string;
   minQty: number;
+  photo?: string;
   options: ProductOption[];
   specs: { label: string; value: string }[];
 }
@@ -22,6 +23,7 @@ export const products: Product[] = [
   // Business & Stationery
   {
     slug: "premium-business-cards",
+    photo: "/images/products/premium-business-cards.jpg",
     category: "business-stationery",
     name: "Premium Business Cards",
     shortDescription: "350gsm matte or gloss, sharp edge every time.",
@@ -56,6 +58,7 @@ export const products: Product[] = [
   },
   {
     slug: "corporate-letterhead",
+    photo: "/images/products/corporate-letterhead.jpg",
     category: "business-stationery",
     name: "Corporate Letterhead",
     shortDescription: "A4 letterhead on textured bond paper.",
@@ -80,6 +83,7 @@ export const products: Product[] = [
   },
   {
     slug: "branded-envelopes",
+    photo: "/images/products/branded-envelopes.jpg",
     category: "business-stationery",
     name: "Branded Envelopes",
     shortDescription: "DL and C4 envelopes with logo print.",
@@ -104,6 +108,7 @@ export const products: Product[] = [
   },
   {
     slug: "desk-notepads",
+    photo: "/images/products/desk-notepads.jpg",
     category: "business-stationery",
     name: "Branded Notepads",
     shortDescription: "Glue-bound A5 notepads, 50 sheets each.",
@@ -130,6 +135,7 @@ export const products: Product[] = [
   // Marketing & Print Ads
   {
     slug: "tri-fold-brochures",
+    photo: "/images/products/tri-fold-brochures.jpg",
     category: "marketing-print",
     name: "Tri-Fold Brochures",
     shortDescription: "A4 tri-fold on gloss art paper.",
@@ -154,6 +160,7 @@ export const products: Product[] = [
   },
   {
     slug: "event-flyers",
+    photo: "/images/products/event-flyers.jpg",
     category: "marketing-print",
     name: "Event Flyers",
     shortDescription: "A5 flyers for launches, sales and events.",
@@ -178,6 +185,7 @@ export const products: Product[] = [
   },
   {
     slug: "product-catalogues",
+    photo: "/images/products/product-catalogues.jpg",
     category: "marketing-print",
     name: "Product Catalogues",
     shortDescription: "Saddle-stitched catalogues, up to 48 pages.",
@@ -202,6 +210,7 @@ export const products: Product[] = [
   },
   {
     slug: "point-of-sale-posters",
+    photo: "/images/products/point-of-sale-posters.jpg",
     category: "marketing-print",
     name: "Point-of-Sale Posters",
     shortDescription: "A2/A3 posters for storefronts and counters.",
@@ -228,6 +237,7 @@ export const products: Product[] = [
   // Large Format
   {
     slug: "roll-up-banners",
+    photo: "/images/products/roll-up-banners.jpg",
     category: "large-format",
     name: "Roll-Up Banners",
     shortDescription: "85×200cm retractable stand banners.",
@@ -252,6 +262,7 @@ export const products: Product[] = [
   },
   {
     slug: "mesh-banners",
+    photo: "/images/products/mesh-banners.jpg",
     category: "large-format",
     name: "Mesh Banners",
     shortDescription: "Wind-through mesh for building wraps.",
@@ -276,6 +287,7 @@ export const products: Product[] = [
   },
   {
     slug: "vehicle-wraps",
+    photo: "/images/products/vehicle-wraps.jpg",
     category: "large-format",
     name: "Vehicle Wraps",
     shortDescription: "Partial or full wraps for cars and vans.",
@@ -300,6 +312,7 @@ export const products: Product[] = [
   },
   {
     slug: "window-graphics",
+    photo: "/images/products/window-graphics.jpg",
     category: "large-format",
     name: "Window Graphics",
     shortDescription: "Perforated or opaque storefront vinyl.",
@@ -326,6 +339,7 @@ export const products: Product[] = [
   // Packaging & Labels
   {
     slug: "custom-mailer-boxes",
+    photo: "/images/products/custom-mailer-boxes.jpg",
     category: "packaging-labels",
     name: "Custom Mailer Boxes",
     shortDescription: "Printed corrugated boxes for shipping.",
@@ -350,6 +364,7 @@ export const products: Product[] = [
   },
   {
     slug: "product-labels",
+    photo: "/images/products/product-labels.jpg",
     category: "packaging-labels",
     name: "Product Labels",
     shortDescription: "Roll labels for bottles, jars and packs.",
@@ -374,6 +389,7 @@ export const products: Product[] = [
   },
   {
     slug: "shipping-tape",
+    photo: "/images/products/shipping-tape.jpg",
     category: "packaging-labels",
     name: "Branded Shipping Tape",
     shortDescription: "48mm printed packing tape.",
@@ -398,6 +414,7 @@ export const products: Product[] = [
   },
   {
     slug: "gift-boxes",
+    photo: "/images/products/gift-boxes.jpg",
     category: "packaging-labels",
     name: "Rigid Gift Boxes",
     shortDescription: "Two-piece rigid boxes with lid.",
@@ -424,6 +441,7 @@ export const products: Product[] = [
   // Promotional & Corporate Gifts
   {
     slug: "branded-pens",
+    photo: "/images/products/branded-pens.jpg",
     category: "promotional-gifts",
     name: "Branded Pens",
     shortDescription: "Metal or plastic pens, pad-printed logo.",
@@ -448,6 +466,7 @@ export const products: Product[] = [
   },
   {
     slug: "ceramic-mugs",
+    photo: "/images/products/ceramic-mugs.jpg",
     category: "promotional-gifts",
     name: "Ceramic Mugs",
     shortDescription: "11oz mugs with full-colour sublimation.",
@@ -472,6 +491,7 @@ export const products: Product[] = [
   },
   {
     slug: "branded-notebooks",
+    photo: "/images/products/branded-notebooks.jpg",
     category: "promotional-gifts",
     name: "Branded Notebooks",
     shortDescription: "A5 hardcover notebooks, foil-stamped.",
@@ -496,6 +516,7 @@ export const products: Product[] = [
   },
   {
     slug: "usb-drives",
+    photo: "/images/products/usb-drives.jpg",
     category: "promotional-gifts",
     name: "Branded USB Drives",
     shortDescription: "16GB USB drives, laser-etched logo.",
@@ -522,6 +543,7 @@ export const products: Product[] = [
   // Branded Apparel
   {
     slug: "embroidered-polos",
+    photo: "/images/products/embroidered-polos.jpg",
     category: "branded-apparel",
     name: "Embroidered Polo Shirts",
     shortDescription: "Cotton-piqué polos, embroidered logo.",
@@ -546,6 +568,7 @@ export const products: Product[] = [
   },
   {
     slug: "printed-tshirts",
+    photo: "/images/products/printed-tshirts.jpg",
     category: "branded-apparel",
     name: "Printed T-Shirts",
     shortDescription: "Cotton tees, screen or DTF printed.",
@@ -570,6 +593,7 @@ export const products: Product[] = [
   },
   {
     slug: "workwear-jackets",
+    photo: "/images/products/workwear-jackets.jpg",
     category: "branded-apparel",
     name: "Branded Workwear Jackets",
     shortDescription: "Hi-vis and softshell jackets, logo print.",
@@ -594,6 +618,7 @@ export const products: Product[] = [
   },
   {
     slug: "branded-caps",
+    photo: "/images/products/branded-caps.jpg",
     category: "branded-apparel",
     name: "Branded Caps",
     shortDescription: "Cotton caps, embroidered front logo.",
