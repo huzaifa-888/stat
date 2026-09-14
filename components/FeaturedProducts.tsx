@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { products } from "@/data/products";
 import ProductCard from "./ProductCard";
+import Reveal from "./Reveal";
 
 const featuredSlugs = [
   "premium-business-cards",
@@ -16,7 +17,7 @@ export default function FeaturedProducts() {
 
   return (
     <section className="mx-auto max-w-content px-6 py-20">
-      <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <Reveal className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 className="font-display text-3xl font-semibold text-navy sm:text-4xl">
             Most reordered
@@ -31,10 +32,12 @@ export default function FeaturedProducts() {
         >
           View all products
         </Link>
-      </div>
+      </Reveal>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {featured.map((p) => (
-          <ProductCard key={p.slug} product={p} />
+        {featured.map((p, i) => (
+          <Reveal key={p.slug} delay={i * 0.07}>
+            <ProductCard product={p} />
+          </Reveal>
         ))}
       </div>
     </section>

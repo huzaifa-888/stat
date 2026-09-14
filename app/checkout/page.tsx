@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import { useCart } from "@/lib/cart-context";
 import { buildWhatsAppOrderLink } from "@/lib/whatsapp";
+import Reveal from "@/components/Reveal";
 
 export default function CheckoutPage() {
   const { items, subtotal, clearCart } = useCart();
@@ -13,16 +15,21 @@ export default function CheckoutPage() {
 
   if (items.length === 0) {
     return (
-      <div className="mx-auto max-w-content px-6 py-24 text-center">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="mx-auto max-w-content px-6 py-24 text-center"
+      >
         <h1 className="font-display text-3xl font-semibold text-navy">Nothing to check out</h1>
         <p className="mt-2 text-navy/60">Your cart is empty right now.</p>
         <Link
           href="/categories/business-stationery"
-          className="focus-ring mt-6 inline-block rounded-pill bg-navy px-6 py-3 text-sm font-semibold text-white hover:bg-navy-deep"
+          className="focus-ring mt-6 inline-block rounded-pill bg-navy px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-navy-deep"
         >
           Browse products
         </Link>
-      </div>
+      </motion.div>
     );
   }
 
@@ -48,14 +55,17 @@ export default function CheckoutPage() {
 
   return (
     <div className="mx-auto max-w-content px-6 py-14">
-      <h1 className="font-display text-3xl font-semibold text-navy">Checkout</h1>
-      <p className="mt-2 max-w-lg text-navy/60">
-        We don't process payment online — submitting this form opens WhatsApp with your
-        full order pre-filled, so we can confirm final pricing and payment with you directly.
-      </p>
+      <Reveal>
+        <h1 className="font-display text-3xl font-semibold text-navy">Checkout</h1>
+        <p className="mt-2 max-w-lg text-navy/60">
+          We don't process payment online — submitting this form opens WhatsApp with your
+          full order pre-filled, so we can confirm final pricing and payment with you directly.
+        </p>
+      </Reveal>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_1fr]">
-        <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-line bg-white p-6">
+        <Reveal delay={0.08}>
+          <form onSubmit={handleSubmit} className="space-y-5 rounded-3xl border border-line bg-white p-6">
           <div>
             <label className="mb-1.5 block text-sm font-medium text-navy" htmlFor="name">Full name</label>
             <input
@@ -102,13 +112,14 @@ export default function CheckoutPage() {
           </div>
           <button
             type="submit"
-            className="focus-ring w-full rounded-pill bg-cyan py-3.5 text-sm font-semibold text-white hover:bg-cyan-deep"
+            className="focus-ring w-full rounded-pill bg-cyan py-3.5 text-sm font-semibold text-white transition-colors hover:bg-cyan-deep"
           >
             Send order on WhatsApp
           </button>
         </form>
+        </Reveal>
 
-        <div className="h-fit rounded-3xl border border-line bg-white p-6">
+        <Reveal delay={0.16} className="h-fit rounded-3xl border border-line bg-white p-6">
           <h2 className="font-display text-lg font-semibold text-navy">Order summary</h2>
           <div className="mt-4 space-y-3">
             {items.map((item) => (
@@ -127,7 +138,7 @@ export default function CheckoutPage() {
             <span>Estimated total</span>
             <span>SAR {subtotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}</span>
           </div>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

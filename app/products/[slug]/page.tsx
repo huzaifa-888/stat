@@ -4,6 +4,7 @@ import Image from "next/image";
 import { products, getProduct } from "@/data/products";
 import { getCategory } from "@/data/categories";
 import AddToCartForm from "@/components/AddToCartForm";
+import Reveal from "@/components/Reveal";
 
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
@@ -36,28 +37,30 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       </nav>
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2">
-        <div>
+        <Reveal>
           <div className="relative aspect-square overflow-hidden rounded-3xl border border-line bg-mist">
             <Image
               src={product.photo ?? category.photo}
               alt={product.name}
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
+              className="object-cover transition-transform duration-500 hover:scale-105"
               priority
             />
           </div>
           <div className="mt-6 grid grid-cols-3 gap-3">
-            {product.specs.map((spec) => (
-              <div key={spec.label} className="rounded-2xl border border-line bg-white p-4">
-                <p className="text-xs text-navy/50">{spec.label}</p>
-                <p className="mt-1 text-sm font-medium text-navy">{spec.value}</p>
-              </div>
+            {product.specs.map((spec, i) => (
+              <Reveal key={spec.label} delay={0.1 + i * 0.06} y={10}>
+                <div className="rounded-2xl border border-line bg-white p-4">
+                  <p className="text-xs text-navy/50">{spec.label}</p>
+                  <p className="mt-1 text-sm font-medium text-navy">{spec.value}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div>
+        <Reveal delay={0.1}>
           <p className="text-sm font-medium text-cyan-deep">{category.name}</p>
           <h1 className="mt-2 font-display text-3xl font-semibold text-navy sm:text-4xl">
             {product.name}
@@ -71,7 +74,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <div className="mt-6">
             <AddToCartForm product={product} />
           </div>
-        </div>
+        </Reveal>
       </div>
     </div>
   );

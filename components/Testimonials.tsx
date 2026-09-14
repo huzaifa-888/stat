@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 const quotes = [
   {
     quote:
@@ -23,20 +25,24 @@ export default function Testimonials() {
   return (
     <section className="bg-mist py-20">
       <div className="mx-auto max-w-content px-6">
-        <h2 className="font-display text-3xl font-semibold text-navy sm:text-4xl">
-          What clients say after the second order
-        </h2>
+        <Reveal>
+          <h2 className="font-display text-3xl font-semibold text-navy sm:text-4xl">
+            What clients say after the second order
+          </h2>
+        </Reveal>
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {quotes.map((q) => (
-            <figure key={q.name} className="rounded-3xl border border-line bg-white p-7">
-              <blockquote className="text-[0.95rem] leading-relaxed text-navy/80">
-                “{q.quote}”
-              </blockquote>
-              <figcaption className="mt-6">
-                <p className="font-display text-sm font-semibold text-navy">{q.name}</p>
-                <p className="text-xs text-navy/50">{q.role}</p>
-              </figcaption>
-            </figure>
+          {quotes.map((q, i) => (
+            <Reveal key={q.name} delay={i * 0.08}>
+              <figure className="h-full rounded-3xl border border-line bg-white p-7 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(11,42,64,0.08)]">
+                <blockquote className="text-[0.95rem] leading-relaxed text-navy/80">
+                  “{q.quote}”
+                </blockquote>
+                <figcaption className="mt-6">
+                  <p className="font-display text-sm font-semibold text-navy">{q.name}</p>
+                  <p className="text-xs text-navy/50">{q.role}</p>
+                </figcaption>
+              </figure>
+            </Reveal>
           ))}
         </div>
       </div>

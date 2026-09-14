@@ -4,6 +4,7 @@ import Image from "next/image";
 import { categories, getCategory } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
+import Reveal from "@/components/Reveal";
 
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
@@ -33,7 +34,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
         <span className="text-navy">{category.name}</span>
       </nav>
 
-      <div className="mt-6 overflow-hidden rounded-3xl border border-line bg-white">
+      <Reveal className="mt-6 overflow-hidden rounded-3xl border border-line bg-white">
         <div className="relative h-56 sm:h-72">
           <Image src={category.photo} alt={category.name} fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/10 to-transparent" />
@@ -50,28 +51,30 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
             Typical turnaround: <span className="font-medium text-navy">{category.turnaround}</span>
           </p>
         </div>
-      </div>
+      </Reveal>
 
       <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {productList.map((product) => (
-          <ProductCard key={product.slug} product={product} />
+        {productList.map((product, i) => (
+          <Reveal key={product.slug} delay={i * 0.05}>
+            <ProductCard product={product} />
+          </Reveal>
         ))}
       </div>
 
-      <div className="mt-16">
+      <Reveal className="mt-16">
         <h2 className="font-display text-xl font-semibold text-navy">Other categories</h2>
         <div className="mt-4 flex flex-wrap gap-2">
           {others.map((c) => (
             <Link
               key={c.slug}
               href={`/categories/${c.slug}`}
-              className="focus-ring rounded-pill border border-line bg-white px-4 py-2 text-sm text-navy/70 hover:bg-mist"
+              className="focus-ring rounded-pill border border-line bg-white px-4 py-2 text-sm text-navy/70 transition-colors hover:bg-mist"
             >
               {c.name}
             </Link>
           ))}
         </div>
-      </div>
+      </Reveal>
     </div>
   );
 }

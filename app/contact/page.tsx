@@ -1,4 +1,5 @@
 import ContactForm from "@/components/ContactForm";
+import Reveal from "@/components/Reveal";
 
 export const metadata = { title: "Contact — Smart Printing" };
 
@@ -6,7 +7,7 @@ export default function ContactPage() {
   return (
     <div className="mx-auto max-w-content px-6 py-14">
       <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
-        <div>
+        <Reveal>
           <p className="text-sm font-medium text-cyan-deep">Get in touch</p>
           <h1 className="mt-2 font-display text-4xl font-semibold text-navy">
             Tell us about the job
@@ -22,9 +23,11 @@ export default function ContactPage() {
             <p><span className="font-medium text-navy">Address:</span> Al Olaya District, Riyadh, Saudi Arabia</p>
             <p><span className="font-medium text-navy">Hours:</span> Sunday–Thursday, 9am–6pm</p>
           </div>
-        </div>
+        </Reveal>
 
-        <ContactForm />
+        <Reveal delay={0.12}>
+          <ContactForm />
+        </Reveal>
       </div>
     </div>
   );

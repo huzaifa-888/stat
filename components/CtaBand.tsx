@@ -1,9 +1,10 @@
 import Link from "next/link";
+import Reveal from "./Reveal";
 
 export default function CtaBand() {
   return (
     <section className="mx-auto max-w-content px-6 pb-20">
-      <div className="halftone relative overflow-hidden rounded-3xl bg-navy px-8 py-14 text-center sm:px-16">
+      <Reveal className="halftone relative overflow-hidden rounded-3xl bg-navy px-8 py-14 text-center sm:px-16">
         <div className="halftone absolute inset-0 opacity-[0.06]" />
         <div className="relative">
           <h2 className="mx-auto max-w-xl font-display text-3xl font-semibold text-white sm:text-4xl">
@@ -28,7 +29,7 @@ export default function CtaBand() {
             </Link>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
